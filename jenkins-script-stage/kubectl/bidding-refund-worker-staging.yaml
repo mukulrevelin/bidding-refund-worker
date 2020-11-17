@@ -21,7 +21,7 @@ spec:
         image: mukulxinaam/rewards-bidding:tagVersion
         imagePullPolicy: Always
         ports:
-        - containerPort: 5003
+        - containerPort: 8080
           name: bidding-worker
 #---
 #apiVersion: v1
