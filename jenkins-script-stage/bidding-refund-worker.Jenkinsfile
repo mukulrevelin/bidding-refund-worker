@@ -38,7 +38,7 @@ node {
       sh 'az login -u $USERNAME -p $PASSWORD'
       sh 'az aks get-credentials -n mzaalo-staging -g dns-mzaalo '
   }
-      sh 'kubectl apply -f jenkins-script-stage/kubectl/bidding-refund-worker-staging-app-pod.yaml'
+      sh 'kubectl create -f jenkins-script-stage/kubectl/bidding-refund-worker-staging-app-pod.yaml'
    }
   
   stage('Mail Send Conformation') {
