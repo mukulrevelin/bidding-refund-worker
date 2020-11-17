@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bidding-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bidding-worker
+  template:
+    metadata:
+      labels:
+        app: bidding-worker
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      imagePullSecrets:
+      - name: secretmukulnew1
+      containers:
+      - name: bidding-worker
+        image: mukulxinaam/rewards-bidding:tagVersion
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5003
+          name: bidding-worker
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: bidding-worker
+#  annotations:
+#   service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+#spec:
+#  type: LoadBalancer
+#  ports:
+#  - port: 5000
+#  selector:
+#    app: bidding-worker
