@@ -7,9 +7,8 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
 
 const refundQueue = new Queue('refund_list', config.redisUrl);
-refundQueue.process(async job => { 
-  console.log('Hello, World!');
-  const refund_amount = job.data.refund_amount;
+refundQueue.process(async job => {
+  const refund_amount = parseInt(job.data.refund_amount);
   const user_id = job.data.user_id;
 
   const token = await JWTVerify.createJWT(user_id);
